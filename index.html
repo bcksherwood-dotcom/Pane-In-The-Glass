@@ -149,31 +149,18 @@
       <h2 class="section-title">Drag to See the Difference</h2>
       <p class="section-sub">The Pane in the Glass difference. Real results, every job.</p>
     </div>
-    <div class="ba-wrap reveal">
-      <div class="ba-container" id="ba-container">
-        <div class="ba-side ba-after">
-          <div class="ba-scene ba-scene-after">
-            <div class="ba-window-grid">
-              <div class="ba-pane clean"></div><div class="ba-pane clean"></div>
-              <div class="ba-pane clean"></div><div class="ba-pane clean"></div>
-            </div>
-            <div class="ba-label">After ✨</div>
-          </div>
-        </div>
-        <div class="ba-side ba-before" id="ba-before">
-          <div class="ba-scene ba-scene-before">
-            <div class="ba-window-grid">
-              <div class="ba-pane dirty"></div><div class="ba-pane dirty"></div>
-              <div class="ba-pane dirty"></div><div class="ba-pane dirty"></div>
-            </div>
-            <div class="ba-label ba-label-left">Before</div>
-          </div>
-        </div>
-        <div class="ba-divider" id="ba-divider">
-          <div class="ba-handle-circle">⟺</div>
-        </div>
-      </div>
+
+    <!-- Before/After Sliders - add your own photos to the images/ folder -->
+    <div id="ba-gallery" class="ba-gallery-wrap reveal"></div>
+
+    <!-- Photo Grid -->
+    <div class="section-header reveal center" style="margin-top:3rem">
+      <div class="section-tag">Photo Gallery</div>
+      <h2 class="section-title" style="font-size:1.8rem">Recent Jobs</h2>
     </div>
+    <div id="photo-grid" class="photo-grid reveal"></div>
+
+    <p class="ba-upload-hint reveal">📸 Photos update automatically when new images are added to the gallery.</p>
   </div>
 </section>
 
@@ -244,8 +231,10 @@
       <h2 class="section-title">Leave a Review</h2>
     </div>
     <div class="glass-form-box reveal">
-      <form id="review-form" name="review-submission" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="review-submission">
+      <form id="review-form" action="https://formsubmit.co/Bcksherwood@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="⭐ New Review — Pane in the Glass">
+        <input type="hidden" name="_next" value="https://bcksherwood-dotcom.github.io/Pane-In-The-Glass/?review=thanks">
+        <input type="hidden" name="_captcha" value="false">
         <div class="form-group">
           <label class="form-label">Your Rating</label>
           <div class="star-picker" id="star-picker">
@@ -300,8 +289,10 @@
       </div>
       <div class="glass-form-box reveal">
         <h3 class="form-title">Request a Free Quote</h3>
-        <form id="contact-form" name="quote-request" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="quote-request">
+        <form id="contact-form" action="https://formsubmit.co/Bcksherwood@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="🪟 New Quote Request — Pane in the Glass">
+          <input type="hidden" name="_next" value="https://bcksherwood-dotcom.github.io/Pane-In-The-Glass/?quote=thanks">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Name</label>

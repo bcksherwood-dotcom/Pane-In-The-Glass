@@ -415,17 +415,10 @@ document.querySelectorAll('.magnetic-light').forEach(el => {
 
 
 // ── TESTIMONIALS CAROUSEL ─────────────────────────────────────────────
-// ── ADD REAL REVIEWS HERE WHEN CUSTOMERS SUBMIT THEM ─────────────────
-const reviews = [
-  { stars:5, name:"Sarah M.", loc:"Cedar Park, TX", text:"Absolutely incredible job. My windows have never looked this clean — even the ones I forgot existed! Fast, professional, and reasonably priced." },
-  { stars:5, name:"James R.", loc:"Cedar Park, TX", text:"Used them for our storefront and the difference was night and day. Customers even commented on how great the windows looked. Highly recommend!" },
-  { stars:5, name:"Linda K.", loc:"Cedar Park, TX", text:"Super easy to schedule, showed up on time, did a flawless job. Already booked them for a recurring monthly clean. Love these guys!" },
-];
-
-(function initT() {
+function initT(reviews) {
   const track = document.getElementById('t-track');
   const dots  = document.getElementById('t-dots');
-  if (!track) return;
+  if (!track || !reviews.length) return;
   let cur=0;
 
   reviews.forEach(r => {
@@ -445,7 +438,9 @@ const reviews = [
     dots.querySelectorAll('.t-dot').forEach((d,j)=>d.classList.toggle('active',j===cur));
   }
   setInterval(()=>go((cur+1)%reviews.length), 5000);
-})();
+}
+
+fetch('reviews.json').then(r=>r.json()).then(initT).catch(()=>initT([]));
 
 
 // ── STAR PICKER ───────────────────────────────────────────────────────
@@ -469,21 +464,29 @@ const reviews = [
 
 
 // ── FORMS ─────────────────────────────────────────────────────────────
-['review-form','contact-form'].forEach(id => {
-  const form = document.getElementById(id);
-  if (!form) return;
-  const success = document.getElementById(id==='review-form'?'review-success':'contact-success');
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    if (id==='review-form' && +document.getElementById('stars-input').value===0) { alert('Please select a star rating.'); return; }
-    const btn = form.querySelector('button[type=submit]');
-    btn.textContent='Sending...'; btn.disabled=true;
-    try {
-      await fetch('/', { method:'POST', body: new FormData(form) });
-      form.style.display='none'; if(success) success.style.display='block';
-    } catch { btn.textContent='Try Again'; btn.disabled=false; }
+// Star rating validation before natural form POST to Formsubmit.co
+const reviewForm = document.getElementById('review-form');
+if (reviewForm) {
+  reviewForm.addEventListener('submit', e => {
+    if (+document.getElementById('stars-input').value === 0) {
+      e.preventDefault();
+      alert('Please select a star rating.');
+    }
   });
-});
+}
+
+// Show success message if redirected back after submission
+(function checkRedirect() {
+  const p = new URLSearchParams(location.search);
+  if (p.get('review') === 'thanks') {
+    const s = document.getElementById('review-success');
+    if (s) { s.style.display='block'; document.getElementById('review-form')?.remove(); }
+  }
+  if (p.get('quote') === 'thanks') {
+    const s = document.getElementById('contact-success');
+    if (s) { s.style.display='block'; document.getElementById('contact-form')?.remove(); }
+  }
+})();
 
 
 // ── NAV TOGGLE ────────────────────────────────────────────────────────
@@ -514,6 +517,65 @@ rippleStyle.textContent = `@keyframes ripple-out { to { transform: translate(-50
 document.head.appendChild(rippleStyle);
 
 
-// ── GALLERY IMAGES (add URLs here + redeploy) ──────────────────────────
-// { src: 'https://i.ibb.co/yourimage.jpg', label: 'After — Cedar Park home' }
-const galleryImages = [];
+// ── BEFORE/AFTER SLIDERS + PHOTO GRID ────────────────────────────────
+// Add pairs named before-1.jpg/after-1.jpg, before-2.jpg/after-2.jpg … in images/
+// Add solo gallery shots named gallery-1.jpg, gallery-2.jpg … in images/
+(function initGallery() {
+  const baWrap = document.getElementById('ba-gallery');
+  const grid   = document.getElementById('photo-grid');
+
+  fetch('images/manifest.json')
+    .then(r => r.json())
+    .then(manifest => {
+      const pairs = manifest.pairs || [];
+      const photos = manifest.photos || [];
+
+      pairs.forEach(pair => {
+        const wrap = document.createElement('div');
+        wrap.className = 'ba-slider';
+        wrap.innerHTML = `
+          <div class="ba-before" style="background-image:url('images/${pair.before}')"></div>
+          <div class="ba-after"  style="background-image:url('images/${pair.after}')"></div>
+          <div class="ba-handle"><div class="ba-line"></div><div class="ba-circle">↔</div><div class="ba-line"></div></div>`;
+        baWrap.appendChild(wrap);
+        initSlider(wrap);
+      });
+
+      photos.forEach(src => {
+        const img = document.createElement('img');
+        img.src = 'images/' + src;
+        img.alt = 'Window cleaning result';
+        img.className = 'photo-item';
+        img.loading = 'lazy';
+        grid.appendChild(img);
+      });
+
+      if (!pairs.length) baWrap.closest('section') && (baWrap.style.display='none');
+      if (!photos.length) grid.style.display='none';
+    })
+    .catch(() => {
+      if (baWrap) baWrap.style.display='none';
+      if (grid) grid.style.display='none';
+    });
+
+  function initSlider(wrap) {
+    const after = wrap.querySelector('.ba-after');
+    const handle = wrap.querySelector('.ba-handle');
+    let dragging = false;
+
+    function setPos(x) {
+      const rect = wrap.getBoundingClientRect();
+      const pct = Math.min(100, Math.max(0, ((x - rect.left) / rect.width) * 100));
+      after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+      handle.style.left = pct + '%';
+    }
+
+    handle.addEventListener('mousedown',  e => { dragging=true; e.preventDefault(); });
+    handle.addEventListener('touchstart', e => { dragging=true; }, {passive:true});
+    document.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
+    document.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
+    document.addEventListener('mouseup',  () => dragging=false);
+    document.addEventListener('touchend', () => dragging=false);
+    setPos(wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width * 0.5);
+  }
+})();
