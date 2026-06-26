@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pane in the Glass | Window Cleaning — Cedar Park, TX</title>
+  <meta name="description" content="Professional window cleaning in Cedar Park, Texas. Residential and commercial. Crystal-clear results, every time. Call 737-733-4237.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
+<canvas id="cursor-trail"></canvas>
+
+<!-- Mobile call button -->
+<a href="tel:7377334237" class="float-call">📞 Call Now</a>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo" id="nav-logo">
+    <span class="logo-pane">PANE</span>
+    <span class="logo-sep"> IN THE </span>
+    <span class="logo-glass">GLASS</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#estimate">Estimate</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta magnetic">Get a Quote</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <canvas id="three-canvas"></canvas>
+  <canvas id="wipe-canvas"></canvas>
+  <div class="hero-content" id="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span> Cedar Park, Texas
+    </div>
+    <h1 class="hero-title">
+      <span class="line scramble-target" data-text="Windows So Clean">Windows So Clean</span>
+      <span class="line line-accent scramble-target" data-text="They're a Pane">They're a <em>Pane</em></span>
+      <span class="line scramble-target" data-text="to Look Through">to Look Through</span>
+    </h1>
+    <p class="hero-sub">Move your cursor to wipe the window — then let us do it for real. Cedar Park's most obsessed window cleaners.</p>
+    <div class="hero-btns">
+      <a href="tel:7377334237" class="btn btn-gold magnetic">📞 &nbsp;737-733-4237</a>
+      <a href="#contact" class="btn btn-glass magnetic">Get a Free Quote →</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+  <div class="hero-wipe-hint" id="wipe-hint">Move cursor to clean the window ↑</div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num gold-text" data-target="100" data-suffix="%">0%</div>
+      <div class="stat-label">Streak-Free Guarantee</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="500" data-suffix="+">0+</div>
+      <div class="stat-label">Windows Cleaned</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="5" data-suffix="★">0★</div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal">
+      <div class="stat-num gold-text" data-target="2" data-suffix="hr">0hr</div>
+      <div class="stat-label">Average Response</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" class="section-pad">
+  <div class="section-inner">
+    <div class="section-header reveal center">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title scramble-target" data-text="Every Window, Covered">Every Window, Covered</h2>
+      <p class="section-sub">From single-story homes to commercial storefronts — streak-free results every single time.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card holo-card reveal magnetic-light">
+        <div class="card-glow"></div>
+        <div class="service-icon">🏠</div>
+        <h3>Residential</h3>
+        <p>Interior and exterior for homes of all sizes. Every pane spotless so you can enjoy the view.</p>
+        <div class="card-shine"></div>
+      </div>
+      <div class="service-card holo-card reveal magnetic-light">
+        <div class="card-glow"></div>
+        <div class="service-icon">🏢</div>
+        <h3>Commercial</h3>
+        <p>Storefronts, offices, multi-story buildings. First impressions start with clean windows.</p>
+        <div class="card-shine"></div>
+      </div>
+      <div class="service-card holo-card reveal magnetic-light">
+        <div class="card-glow"></div>
+        <div class="service-icon">🖼️</div>
+        <h3>Screen Cleaning</h3>
+        <p>Screens trap dust that blocks light. Cleaned and reinstalled so windows perform at their best.</p>
+        <div class="card-shine"></div>
+      </div>
+      <div class="service-card holo-card reveal magnetic-light">
+        <div class="card-glow"></div>
+        <div class="service-icon">🏗️</div>
+        <h3>Post-Construction</h3>
+        <p>Remove construction dust, paint specks, and debris for a move-in-ready finish.</p>
+        <div class="card-shine"></div>
+      </div>
+      <div class="service-card holo-card reveal magnetic-light">
+        <div class="card-glow"></div>
+        <div class="service-icon">🌿</div>
+        <h3>Hard Water Stains</h3>
+        <p>Stubborn mineral deposits from sprinklers are no match for our specialized treatments.</p>
+        <div class="card-shine"></div>
+      </div>
+      <div class="service-card holo-card reveal magnetic-light">
+        <div class="card-glow"></div>
+        <div class="service-icon">📅</div>
+        <h3>Recurring Plans</h3>
+        <p>Monthly, bi-monthly, or quarterly service plans with discounts for recurring customers.</p>
+        <div class="card-shine"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEFORE / AFTER ── -->
+<section id="gallery" class="section-pad ba-section">
+  <div class="section-inner">
+    <div class="section-header reveal center">
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-title">Drag to See the Difference</h2>
+      <p class="section-sub">The Pane in the Glass difference. Real results, every job.</p>
+    </div>
+    <div class="ba-wrap reveal">
+      <div class="ba-container" id="ba-container">
+        <div class="ba-side ba-after">
+          <div class="ba-scene ba-scene-after">
+            <div class="ba-window-grid">
+              <div class="ba-pane clean"></div><div class="ba-pane clean"></div>
+              <div class="ba-pane clean"></div><div class="ba-pane clean"></div>
+            </div>
+            <div class="ba-label">After ✨</div>
+          </div>
+        </div>
+        <div class="ba-side ba-before" id="ba-before">
+          <div class="ba-scene ba-scene-before">
+            <div class="ba-window-grid">
+              <div class="ba-pane dirty"></div><div class="ba-pane dirty"></div>
+              <div class="ba-pane dirty"></div><div class="ba-pane dirty"></div>
+            </div>
+            <div class="ba-label ba-label-left">Before</div>
+          </div>
+        </div>
+        <div class="ba-divider" id="ba-divider">
+          <div class="ba-handle-circle">⟺</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICE ESTIMATOR ── -->
+<section id="estimate" class="section-pad">
+  <div class="section-inner">
+    <div class="section-header reveal center">
+      <div class="section-tag">Instant Estimate</div>
+      <h2 class="section-title">How Much Will It Cost?</h2>
+      <p class="section-sub">Get a ballpark right now. We confirm the exact price before any work starts.</p>
+    </div>
+    <div class="calc-box reveal">
+      <div class="calc-grid">
+        <div class="calc-col">
+          <div class="calc-label">Number of Windows</div>
+          <div class="calc-big-num" id="win-display">12</div>
+          <input type="range" id="win-slider" min="5" max="60" value="12" class="range-slider">
+          <div class="range-labels"><span>5</span><span>60</span></div>
+        </div>
+        <div class="calc-col">
+          <div class="calc-label">Stories</div>
+          <div class="story-btns">
+            <button class="story-btn active" data-stories="1">1</button>
+            <button class="story-btn" data-stories="2">2</button>
+            <button class="story-btn" data-stories="3">3+</button>
+          </div>
+          <div class="calc-label" style="margin-top:1.5rem">Add-ons</div>
+          <div class="addon-list">
+            <div class="addon-toggle" id="tog-screens">🖼️ Screens</div>
+            <div class="addon-toggle" id="tog-interior">🏠 In + Out</div>
+            <div class="addon-toggle" id="tog-hw">💧 Hard Water</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="result-label">Estimated Cost</div>
+        <div class="result-price" id="calc-price">$96</div>
+        <div class="result-range" id="calc-range">Range: $86 – $110</div>
+        <a href="#contact" class="btn btn-gold magnetic" style="margin-top:1.25rem; display:inline-flex;">Book This Service →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="reviews" class="section-pad testimonials-section">
+  <div class="section-inner">
+    <div class="section-header reveal center">
+      <div class="section-tag">Reviews</div>
+      <h2 class="section-title">What Cedar Park Says</h2>
+      <p class="section-sub">Don't just take our word for it.</p>
+    </div>
+    <div class="t-wrap reveal">
+      <div class="t-track" id="t-track"></div>
+    </div>
+    <div class="t-dots" id="t-dots"></div>
+    <div class="center" style="margin-top:2.5rem">
+      <button class="btn btn-glass magnetic" onclick="document.getElementById('review-section').style.display='block';this.closest('section').nextElementSibling.scrollIntoView({behavior:'smooth'})">⭐ Leave a Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEAVE A REVIEW ── -->
+<section id="review-section" class="section-pad" style="display:none">
+  <div class="section-inner">
+    <div class="section-header reveal center">
+      <div class="section-tag">Share Your Experience</div>
+      <h2 class="section-title">Leave a Review</h2>
+    </div>
+    <div class="glass-form-box reveal">
+      <form id="review-form" name="review-submission" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="review-submission">
+        <div class="form-group">
+          <label class="form-label">Your Rating</label>
+          <div class="star-picker" id="star-picker">
+            <span data-val="1">★</span><span data-val="2">★</span>
+            <span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+          </div>
+          <input type="hidden" name="stars" id="stars-input" value="0">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-input" placeholder="Jane S." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">City</label>
+            <input type="text" name="location" class="form-input" placeholder="Cedar Park, TX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Review</label>
+          <textarea name="review" class="form-input" rows="4" placeholder="Tell others about your experience..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-cyan w-full magnetic">Submit Review →</button>
+      </form>
+      <div class="form-success" id="review-success">✅ Thanks for your review!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="section-pad contact-section">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-title">Ready for Crystal-Clear Windows?</h2>
+        <p class="section-sub">Free quotes, no pressure. Cedar Park and the greater Austin area.</p>
+        <div class="contact-items">
+          <a href="tel:7377334237" class="contact-item magnetic-light">
+            <div class="c-icon">📞</div>
+            <div><div class="c-main">737-733-4237</div><div class="c-sub">Call or text anytime</div></div>
+          </a>
+          <a href="mailto:Bcksherwood@gmail.com" class="contact-item magnetic-light">
+            <div class="c-icon">✉️</div>
+            <div><div class="c-main">Bcksherwood@gmail.com</div><div class="c-sub">Reply within a few hours</div></div>
+          </a>
+          <div class="contact-item">
+            <div class="c-icon">📍</div>
+            <div><div class="c-main">Cedar Park, Texas</div><div class="c-sub">Serving Cedar Park & the Austin area</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="glass-form-box reveal">
+        <h3 class="form-title">Request a Free Quote</h3>
+        <form id="contact-form" name="quote-request" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="quote-request">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input type="text" name="name" class="form-input" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" name="phone" class="form-input" placeholder="555-000-0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input" placeholder="you@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service</label>
+            <select name="service" class="form-input">
+              <option value="">— Select —</option>
+              <option>Residential Window Cleaning</option>
+              <option>Commercial Window Cleaning</option>
+              <option>Screen Cleaning</option>
+              <option>Post-Construction Cleanup</option>
+              <option>Hard Water Stain Removal</option>
+              <option>Recurring Maintenance Plan</option>
+              <option>Not sure — just need a quote</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">About your property</label>
+            <textarea name="message" class="form-input" rows="3" placeholder="e.g. 2-story house, ~20 windows..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold w-full magnetic">Send Quote Request →</button>
+        </form>
+        <div class="form-success" id="contact-success">✅ Got it! We'll reach out shortly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Pane in the Glass</strong> · Window Cleaning · Cedar Park, TX</p>
+  <p><a href="tel:7377334237">737-733-4237</a> · <a href="mailto:Bcksherwood@gmail.com">Bcksherwood@gmail.com</a></p>
+  <p class="footer-copy">© 2026 Pane in the Glass. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
